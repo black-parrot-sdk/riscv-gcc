@@ -37,7 +37,7 @@ along with GCC; see the file COPYING3.  If not see
 #endif
 
 #ifndef RISCV_TUNE_STRING_DEFAULT
-#define RISCV_TUNE_STRING_DEFAULT "rocket"
+#define RISCV_TUNE_STRING_DEFAULT "bsg_blackparrot"
 #endif
 
 /* Support for a compile-time default CPU, et cetera.  The rules are:
