@@ -19,7 +19,7 @@
        (eq_attr "type" "jump,call"))
   "bsg_blackparrot_alu")
 
-(define_insn_reservation "bsg_blackparrot_load" 3
+(define_insn_reservation "bsg_blackparrot_load" 2
   (and (eq_attr "tune" "bsg_blackparrot")
        (eq_attr "type" "load,fpload"))
   "bsg_blackparrot_alu")
