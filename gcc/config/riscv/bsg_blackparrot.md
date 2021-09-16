@@ -19,9 +19,14 @@
        (eq_attr "type" "jump,call"))
   "bsg_blackparrot_alu")
 
-(define_insn_reservation "bsg_blackparrot_load" 2
+(define_insn_reservation "bsg_blackparrot_iload" 2
   (and (eq_attr "tune" "bsg_blackparrot")
-       (eq_attr "type" "load,fpload"))
+       (eq_attr "type" "load"))
+  "bsg_blackparrot_alu")
+
+(define_insn_reservation "bsg_blackparrot_fload" 3
+  (and (eq_attr "tune" "bsg_blackparrot")
+       (eq_attr "type" "fpload"))
   "bsg_blackparrot_alu")
 
 (define_insn_reservation "bsg_blackparrot_store" 1
@@ -34,12 +39,22 @@
        (eq_attr "type" "imul"))
   "bsg_blackparrot_alu")
 
-(define_insn_reservation "bsg_blackparrot_idiv" 34
+(define_insn_reservation "bsg_blackparrot_idiv" 66
   (and (eq_attr "tune" "bsg_blackparrot")
        (eq_attr "type" "idiv"))
-  "bsg_blackparrot_div*34")
+  "bsg_blackparrot_div*66")
 
-(define_insn_reservation "bsg_blackparrot_floats" 5
+(define_insn_reservation "bsg_blackparrot_floats_aux" 2
   (and (eq_attr "tune" "bsg_blackparrot")
-       (eq_attr "type" "fadd,fmul,fdiv,fcvt,fcmp,fmove"))
+       (eq_attr "type" "fcvt,fcmp,fmove"))
   "bsg_blackparrot_alu")
+
+(define_insn_reservation "bsg_blackparrot_floats_fma" 5
+  (and (eq_attr "tune" "bsg_blackparrot")
+       (eq_attr "type" "fadd,fmul,fmadd"))
+  "bsg_blackparrot_alu")
+
+(define_insn_reservation "bsg_blackparrot_floats_long" 55
+  (and (eq_attr "tune" "bsg_blackparrot")
+       (eq_attr "type" "fdiv,fsqrt"))
+  "bsg_blackparrot_div*55")
